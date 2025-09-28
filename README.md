@@ -22,6 +22,8 @@ The objective is to analyze transient natural convection in an ONAN power transf
 
 ## 🔹 Geometry and Named Selections
 
+![Geometry and Named Selections](NamedSelections.png)
+
 - **Core (Hot Wall)**: isothermal boundary condition at target winding temperature (e.g. 373 K / 100 °C).  
 - **Radiator (Cold Wall)**: isothermal at ambient (e.g. 298 K / 25 °C).  
 - **Walls**: adiabatic, no-slip boundaries.  
@@ -51,6 +53,8 @@ Properties defined at a **film temperature** (midpoint between hot and cold wall
 ## 🔹 Mesh Statistics
 
 Generated in ANSYS Mesher with inflation layers at heated/cooled walls.
+
+![Mesh](Mesh.png)
 
 - **Nodes**: 9780  
 - **Elements**: 9453  
