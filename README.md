@@ -4,8 +4,7 @@
 
 This repository documents a **2D CFD study of natural convection in transformer oil** between a hot "core" wall and a cold "radiator" wall, representative of an ONAN (Oil Natural Air Natural) cooling mode in power transformers.
 
-The objective is to analyze transient natural convection, extract relevant **dimensionless numbers** (Re, Gr, Ra, Pr, Nu), and evaluate the effective convection coefficient in transformer oil.
-
+The objective is to analyze transient natural convection in an ONAN power transformer.
 ---
 
 ## 🔹 Simulation Setup
