@@ -13,7 +13,7 @@ The objective is to analyze transient natural convection in an ONAN power transf
 - **Solver Type**: Pressure-based, Transient, Laminar  
 - **Gravity**: Enabled, **Y = −9.81 m/s²**  
 - **Energy Equation**: Enabled  
-- **Time Step**: 0.02–0.05 s (CFL < 1), 30 iterations/step  
+- **Time Step**: 0.5s (CFL < 1), 2 iterations/step  
 - **Transient Formulation**: Second-Order Implicit  
 - **Spatial Discretization**: Second-order upwind for momentum & energy  
 - **Initialization**: Hybrid (fluid initialized at ambient temperature)
@@ -70,24 +70,21 @@ Generated in ANSYS Mesher with inflation layers at heated/cooled walls.
 ## 🔹 Target Dimensionless Numbers
 
 **Assumptions (consistent with case setup):**
-- **Height of cavity** \(H \approx 0.04\ \text{m}\) (40 mm)  
-- **Temperatures**: \(T_h \approx 100^\circ\text{C}\) (373 K), \(T_c \approx 25^\circ\text{C}\) (298 K) → \(\Delta T \approx 75\ \text{K}\)  
-- **Oil properties at film \(T_f \approx 335\ \text{K}\):**  
-  \(\rho_0 \approx 850\ \text{kg/m}^3,\; k \approx 0.12\ \text{W/m·K},\; c_p \approx 2000\ \text{J/kg·K},\; \mu \approx 0.012\ \text{Pa·s},\; \beta \approx 8\times10^{-4}\ \text{K}^{-1}\)  
-  → \(\nu=\mu/\rho_0\approx 1.4\times10^{-5}\,\text{m}^2/\text{s},\;\; \alpha=k/(\rho_0 c_p)\approx 7.1\times10^{-8}\,\text{m}^2/\text{s}\)
+- **Height of cavity**: H ≈ 0.04 m (40 mm)  
+- **Temperatures**: Th ≈ 100 °C (373 K), Tc ≈ 25 °C (298 K) → ΔT ≈ 75 K  
+- **Oil properties at film Tf ≈ 335 K:**  
+  ρ₀ ≈ 850 kg/m³, k ≈ 0.12 W/m·K, cp ≈ 2000 J/kg·K, μ ≈ 0.012 Pa·s, β ≈ 8×10⁻⁴ K⁻¹  
+  → ν = μ/ρ₀ ≈ 1.4×10⁻⁵ m²/s,   α = k/(ρ₀·cp) ≈ 7.1×10⁻⁸ m²/s
 
 **Derived targets:**
-- **Prandtl**: \(Pr \approx \mathbf{200}\)  
-- **Grashof**: \(Gr_H \approx \mathbf{1.9\times10^5}\)  
-- **Rayleigh**: \(Ra_H \approx \mathbf{3.8\times10^7}\)  
-- **Characteristic velocity**: \(U \approx \mathbf{0.01\ \text{m/s}}\) (≈1 cm/s)  
-- **Reynolds**: \(Re \approx \mathbf{30}\) (laminar)  
-- **Nusselt (avg, vertical wall)**: \(\overline{Nu} \approx \mathbf{30–70}\)  
-- **Effective convection coefficient**: \(\overline{h} \approx \mathbf{90–210\ \text{W/m}^2\!\cdot\!\text{K}}\)
-
-**Interpretation:**  
-High \(Pr\) and \(Ra\sim10^{7}\) with \(Re\sim30\) indicate a **laminar natural-convection roll**, as expected for ONAN cooling. The oil-side \(h\) in the order of \(10^2\ \text{W/m}^2\!\cdot\!\text{K}\) is realistic for transformer operation.
-
+- **Prandtl**: Pr ≈ **200**  
+- **Grashof**: Gr_H ≈ **1.9×10⁵**  
+- **Rayleigh**: Ra_H ≈ **3.8×10⁷**  
+- **Characteristic velocity**: U ≈ **0.01 m/s** (≈1 cm/s)  
+- **Reynolds**: Re ≈ **30** (laminar)  
+- **Nusselt (avg, vertical wall)**: Nu ≈ **30–70**  
+- **Effective convection coefficient**: h ≈ **90–210 W/m²·K**
+- 
 ---
 
 ## 🔹 Workflow Summary
@@ -109,7 +106,7 @@ High \(Pr\) and \(Ra\sim10^{7}\) with \(Re\sim30\) indicate a **laminar natural-
 
 4. **Solution Controls**
    - URFs: p=0.3, m=0.5, e=1.0  
-   - Transient, 0.02–0.05 s Δt, 30 iterations/step  
+   - Transient, 0.5s Δt, 2 iterations/step  
    - Residual targets: 1e−8 (Energy), 1e−5 (others)  
 
 5. **Monitoring**
@@ -120,16 +117,14 @@ High \(Pr\) and \(Ra\sim10^{7}\) with \(Re\sim30\) indicate a **laminar natural-
 6. **Post-processing**
    - Temperature contours  
    - Velocity streamlines  
-   - Local/average wall heat flux  
-   - Nusselt number distribution  
-   - Effective convection coefficient h  
+   - Local/average wall heat flux
 
 ---
 
 ## 🔹 Results
 
 ### Temperature Contour
-![Temperature Contour](temperature_contour.gif)
+![Temperature Contour](temp.gif)
 
 ### Velocity Vector Lines
 ![Velocity Vector lines](vectorvel.gif)
@@ -142,18 +137,8 @@ High \(Pr\) and \(Ra\sim10^{7}\) with \(Re\sim30\) indicate a **laminar natural-
 ## 🔹 Key Observations
 
 - **Natural convection roll** forms with upward plume near Core and downward return near Radiator.  
-- Bulk oil temperature rises and reaches quasi-steady state after ~3000 time steps.  
-- Energy balance check: |Q_core| ≈ |Q_rad| (within <1%).  
-- Average convection coefficient **h ≈ XX W/m²·K** (to be filled with CFD result).  
-- Corresponding Nusselt number **Nu ≈ YY** (dimensionless validation).
-
----
-
-## 🔹 Next Steps
-
-- Extend to **Conjugate Heat Transfer (CHT)** with solid fin and external air.  
-- Include **radiation** for more realistic ONAN performance.  
-- Compare CFD-derived h and Nu with **Churchill–Chu correlations** for validation.
+- Bulk oil temperature rises and reaches quasi-steady state after ~700 time steps.  
+- Convection circulation cell is observed between the core and the radiator section.
 
 ---
 
