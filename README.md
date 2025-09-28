@@ -84,7 +84,6 @@ Generated in ANSYS Mesher with inflation layers at heated/cooled walls.
 - **Reynolds**: Re ≈ **30** (laminar)  
 - **Nusselt (avg, vertical wall)**: Nu ≈ **30–70**  
 - **Effective convection coefficient**: h ≈ **90–210 W/m²·K**
-- 
 ---
 
 ## 🔹 Workflow Summary
