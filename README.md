@@ -11,7 +11,7 @@ The objective is to analyze transient natural convection in an ONAN power transf
 
 - **Solver**: ANSYS Fluent 2024 R1  
 - **Solver Type**: Pressure-based, Transient, Laminar  
-- **Gravity**: Enabled, **Y = −9.81 m/s²**  
+- **Gravity**: Enabled, **Y = -9.81 m/s²**  
 - **Energy Equation**: Enabled  
 - **Time Step**: 0.5s (CFL < 1), 2 iterations/step  
 - **Transient Formulation**: Second-Order Implicit  
@@ -38,7 +38,7 @@ Properties defined at a **film temperature** (midpoint between hot and cold wall
 
 - **Density**: Boussinesq model  
   - ρ₀ = 850 kg/m³  
-  - β = 8 × 10⁻⁴ K⁻¹  
+  - β = 8 × 10-⁴ K-¹  
   - T₀ = 333 K  
 - **Cp**: 2000 J/kg·K  
 - **Thermal Conductivity**: 0.12 W/m·K  
@@ -77,8 +77,8 @@ Generated in ANSYS Mesher with inflation layers at heated/cooled walls.
 - **Height of cavity**: H ≈ 0.04 m (40 mm)  
 - **Temperatures**: Th ≈ 100 °C (373 K), Tc ≈ 25 °C (298 K) → ΔT ≈ 75 K  
 - **Oil properties at film Tf ≈ 335 K:**  
-  ρ₀ ≈ 850 kg/m³, k ≈ 0.12 W/m·K, cp ≈ 2000 J/kg·K, μ ≈ 0.012 Pa·s, β ≈ 8×10⁻⁴ K⁻¹  
-  → ν = μ/ρ₀ ≈ 1.4×10⁻⁵ m²/s,   α = k/(ρ₀·cp) ≈ 7.1×10⁻⁸ m²/s
+  ρ₀ ≈ 850 kg/m³, k ≈ 0.12 W/m·K, cp ≈ 2000 J/kg·K, μ ≈ 0.012 Pa·s, β ≈ 8×10-⁴ K-¹  
+  → ν = μ/ρ₀ ≈ 1.4×10-⁵ m²/s,   α = k/(ρ₀·cp) ≈ 7.1×10-⁸ m²/s
 
 **Derived targets:**
 - **Prandtl**: Pr ≈ **200**  
@@ -100,7 +100,7 @@ Generated in ANSYS Mesher with inflation layers at heated/cooled walls.
 2. **Physics Setup**
    - Pressure-based, transient laminar solver  
    - Energy ON, Boussinesq density, μ(T) defined  
-   - Gravity enabled (Y = −9.81 m/s²)  
+   - Gravity enabled (Y = -9.81 m/s²)  
 
 3. **Boundary Conditions**
    - Core: isothermal hot wall  
@@ -110,7 +110,7 @@ Generated in ANSYS Mesher with inflation layers at heated/cooled walls.
 4. **Solution Controls**
    - URFs: p=0.3, m=0.5, e=1.0  
    - Transient, 0.5s Δt, 2 iterations/step  
-   - Residual targets: 1e−8 (Energy), 1e−5 (others)  
+   - Residual targets: 1e-8 (Energy), 1e-5 (others)  
 
 5. **Monitoring**
    - Heat transfer rate at Core & Radiator (Q_core, Q_rad)  
